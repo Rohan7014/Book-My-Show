@@ -14,7 +14,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
-    @PostMapping("/add")
+    @PostMapping("/adduser")
     public String addUser(@RequestBody AddUserDto user){
         try{
             String result=userService.addUser(user);

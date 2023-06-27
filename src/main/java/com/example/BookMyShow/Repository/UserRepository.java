@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
-    @Query(value = "Select * from users where age >=: value ",nativeQuery = true)
+    @Query(value = "Select * from users where age >=:value ",nativeQuery = true)
     List<User> findUserWithAgeGreater(@Param("value") Integer value);
     //This is a custom Function that you have defined
     // You need to write a query on top of this
