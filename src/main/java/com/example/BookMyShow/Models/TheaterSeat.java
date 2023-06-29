@@ -12,6 +12,7 @@ public class TheaterSeat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String seatNo;
+    @Enumerated(value = EnumType.STRING)
     private SeatType seatType;
     @ManyToOne
     @JoinColumn
