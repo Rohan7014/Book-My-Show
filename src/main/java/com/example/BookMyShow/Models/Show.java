@@ -1,19 +1,27 @@
 package com.example.BookMyShow.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "shows")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Show {
-    private LocalTime localTime;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private LocalTime time;
     private Date date;
     @ManyToOne
     @JoinColumn
@@ -21,4 +29,6 @@ public class Show {
     @ManyToOne
     @JoinColumn
     private Theater theater;
+    @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
+    private List<ShowSeat> showSeatList=new ArrayList<>();
 }

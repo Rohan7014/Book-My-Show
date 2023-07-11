@@ -5,16 +5,19 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "showseats")
+@Table(name = "show seats")
 @Data
 public class ShowSeat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int seatNo;
+    private String  seatNo;
     private int price;
     @Enumerated(value = EnumType.STRING)
     private SeatType seatType;
     private boolean isAvailable;
-    private boolean isFoodAvailable;
+    private boolean isFoodAttached;
+    @ManyToOne
+    @JoinColumn
+    private Show show;
 }
